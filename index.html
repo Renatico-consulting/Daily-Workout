@@ -26,24 +26,22 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text',sans-serif;backg
 .exercise-header{display:flex;align-items:center;padding:14px 16px;gap:12px;cursor:pointer}
 .exercise-name{flex:1;font-size:17px;font-weight:600;line-height:1.3}
 .exercise-name.injury{color:#ff9f0a}
-.exercise-meta{display:flex;gap:12px;margin-top:3px;flex-wrap:wrap}
+.exercise-meta{display:flex;gap:8px;margin-top:4px;flex-wrap:wrap;align-items:center}
 .meta-pill{font-size:13px;color:#888;font-weight:500}
 .chevron{font-size:13px;color:#555;transition:transform 0.2s;flex-shrink:0}
 .chevron.open{transform:rotate(180deg)}
 .exercise-detail{padding:0 16px 14px;border-top:1px solid #252525}
 .warning-box{background:#2a1f00;border:1px solid #ff9f0a;border-radius:10px;padding:10px 12px;margin:10px 0;font-size:14px;color:#ff9f0a;line-height:1.5}
 .sets-container{margin:10px 0}
-.set-row{display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid #1f1f1f}
+.set-row{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid #1f1f1f}
 .set-row:last-child{border-bottom:none}
 .set-label{font-size:13px;color:#666;width:36px;flex-shrink:0}
-.set-input{background:#111;border:1px solid #2a2a2a;border-radius:8px;color:#f0f0f0;font-size:14px;padding:6px 8px;width:72px;text-align:center;font-family:inherit}
+.set-input{background:#111;border:1px solid #2a2a2a;border-radius:8px;color:#f0f0f0;font-size:14px;padding:6px 8px;text-align:center;font-family:inherit}
 .set-input:focus{outline:none;border-color:#444}
-.set-input.saved{border-color:#30d158}
-.set-check{width:36px;height:36px;border-radius:50%;border:2px solid #333;background:transparent;color:#888;font-size:14px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.set-check{width:38px;height:38px;border-radius:50%;border:2px solid #333;background:transparent;color:#888;font-size:15px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .set-check.done{background:#30d158;border-color:#30d158;color:#000}
-.set-unit{font-size:12px;color:#555;width:28px}
-.last-session{font-size:12px;color:#555;margin-left:auto;flex-shrink:0}
-.rest-timer-btn{margin:8px 0;background:#2a2a2a;border:none;color:#aaa;padding:9px 18px;border-radius:10px;font-size:14px;cursor:pointer}
+.set-unit{font-size:12px;color:#555;width:26px;flex-shrink:0}
+.rest-timer-btn{margin:10px 0 4px;background:#2a2a2a;border:none;color:#aaa;padding:9px 18px;border-radius:10px;font-size:14px;cursor:pointer}
 .notes-input{width:100%;background:#111;border:1px solid #2a2a2a;border-radius:10px;color:#f0f0f0;font-size:15px;padding:10px 12px;margin-top:8px;resize:none;font-family:inherit}
 .notes-input::placeholder{color:#444}
 .notes-input:focus{outline:none;border-color:#444}
@@ -73,12 +71,16 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text',sans-serif;backg
 .rest-day-card{margin:20px 8px;background:#1a1a1a;border-radius:16px;padding:28px 20px;text-align:center}
 .rest-day-title{font-size:24px;font-weight:700;margin-bottom:8px}
 .rest-day-text{font-size:15px;color:#888;line-height:1.6}
-.cardio-card{margin:4px 8px;background:#1a1a1a;border-radius:14px;padding:14px 16px}
-.cardio-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #252525}
+.cardio-card{margin:4px 8px;background:#1a1a1a;border-radius:14px;overflow:hidden}
+.cardio-row{padding:12px 16px;border-bottom:1px solid #252525}
 .cardio-row:last-child{border-bottom:none}
+.cardio-row-top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
 .cardio-name{font-size:15px;font-weight:500}
 .cardio-detail{font-size:13px;color:#888;margin-top:2px}
-.cardio-badge{font-size:13px;color:#ff6b6b;font-weight:600;background:#2a1a1a;padding:4px 10px;border-radius:12px;flex-shrink:0}
+.cardio-badge{font-size:13px;color:#ff6b6b;font-weight:600;background:#2a1a1a;padding:4px 10px;border-radius:12px;flex-shrink:0;white-space:nowrap}
+.cardio-notes-toggle{font-size:13px;color:#555;background:none;border:none;cursor:pointer;padding:6px 0 2px;display:block;text-align:left}
+.cardio-notes-toggle:hover{color:#888}
+.cardio-note-preview{font-size:13px;color:#555;margin-top:4px;font-style:italic;line-height:1.4}
 .mobility-card{margin:4px 8px;background:#1a1a1a;border-radius:14px;overflow:hidden}
 .mobility-row{display:flex;align-items:center;padding:12px 16px;border-bottom:1px solid #1f1f1f;gap:12px}
 .mobility-row:last-child{border-bottom:none}
@@ -87,7 +89,15 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text',sans-serif;backg
 .mob-timer-btn.running{background:#30d158;color:#000}
 .progress-bar{height:3px;background:#2a2a2a;margin:0 8px 4px;border-radius:2px;overflow:hidden}
 .progress-fill{height:100%;background:#30d158;transition:width 0.3s;border-radius:2px}
-.suggestion-badge{font-size:12px;color:#30d158;background:#0a2a0a;border:1px solid #1a4a1a;padding:3px 8px;border-radius:8px;margin-left:6px}
+.suggestion-badge{font-size:12px;color:#30d158;background:#0a2a0a;border:1px solid #1a4a1a;padding:3px 8px;border-radius:8px}
+.locked-badge{font-size:12px;color:#ff9f0a;background:#2a1f00;border:1px solid #5a3f00;padding:3px 8px;border-radius:8px}
+.streak-bar{display:flex;gap:5px;margin:4px 0 10px}
+.streak-dot{width:20px;height:6px;border-radius:3px}
+.streak-dot.hit{background:#30d158}
+.streak-dot.miss{background:#2a2a2a}
+.choice-selector{display:flex;gap:6px;margin:10px 0 6px;flex-wrap:wrap}
+.choice-btn{padding:8px 16px;border-radius:20px;border:1px solid #333;background:transparent;color:#888;font-size:14px;cursor:pointer;transition:all 0.15s;font-family:inherit}
+.choice-btn.selected{background:#30d158;border-color:#30d158;color:#000;font-weight:600}
 </style>
 </head>
 <body>
@@ -96,7 +106,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text',sans-serif;backg
   <div class="app-title">My Workout</div>
   <div class="day-tabs" id="dayTabs"></div>
 </div>
-
 <div id="appContent"></div>
 
 <div class="timer-overlay" id="timerOverlay">
@@ -109,527 +118,563 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text',sans-serif;backg
 </div>
 
 <script>
-const DAYS = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
-const FULL_DAYS = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
-const SUBTITLES = ['Upper Body Strength','Zone 2 Cardio + Mobility','Lower Body Strength','Intervals + Recovery','Total Body + HIIT','Rest Day','Rest Day'];
-const DURATIONS = ['~60 min','~55–60 min','~60 min','~50–55 min','~60 min','',''];
+const DAYS=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+const FULL_DAYS=['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+const SUBTITLES=['Upper Body Strength','Zone 2 Cardio + Mobility','Lower Body Strength','Intervals + Recovery','Total Body + HIIT','Rest Day','Rest Day'];
+const DURATIONS=['~60 min','~55–60 min','~60 min','~50–55 min','~60 min','',''];
 
-const WORKOUTS = {
-  0: {
-    sections: [
-      { label:'Warm-up', type:'exercises', items:[
-        { name:'Elliptical — light resistance', sets:1, reps:'10 min', weight:'Level 3–4', rest:null },
-        { name:'Face pulls (rotator cuff prep)', sets:1, reps:'15–20', weight:'30–40 lbs', rest:null },
-        { name:'Band pull-aparts', sets:1, reps:'15', weight:'Light band', rest:null },
+const WORKOUTS={
+  0:{
+    sections:[
+      {label:'Warm-up',type:'exercises',items:[
+        {name:'Elliptical — light resistance',sets:1,reps:'10 min',weight:'Level 3–4',rest:null},
+        {name:'Face pulls (rotator cuff prep)',sets:1,reps:'15–20',weight:'30–40 lbs',rest:null},
+        {name:'Band pull-aparts',sets:1,reps:'15',weight:'Light band',rest:null},
       ]},
-      { label:'Main Work — Supersets', type:'exercises', items:[
-        { name:'A1 · Machine chest press', sets:4, reps:'8–10', weight:'50–60% normal', rest:'90 sec', injury:true, injuryNote:'Light load only — 50–60% normal weight. Stop reps before full elbow extension. Pain >2–3/10 = stop immediately.' },
-        { name:'A2 · Cable or DB row', sets:4, reps:'8–10', weight:'60–70 lbs DBs / 120 lbs cable', rest:'90 sec', note:'Superset with A1' },
-        { name:'B1 · Lat pulldown', sets:3, reps:'8–10', weight:'100–120 lbs', rest:'60 sec' },
-        { name:'B2 · Cable chest fly', sets:3, reps:'12–15', weight:'25–30 lbs/side', rest:'60 sec', note:'Superset with B1' },
-        { name:'Face pulls (rear delt + rotator cuff)', sets:3, reps:'12–15', weight:'40–50 lbs', rest:'60 sec' },
-        { name:'Lateral raises', sets:3, reps:'12–15', weight:'15–20 lbs', rest:'60 sec' },
-        { name:'Biceps curls', sets:2, reps:'12', weight:'30–35 lbs DBs', rest:'60 sec' },
+      {label:'Main Work — Supersets',type:'exercises',items:[
+        {name:'A1 · Machine chest press',sets:4,reps:'8–10',weight:'50–60% normal',rest:'90 sec',injury:true,injuryNote:'Light load only — 50–60% normal weight. Stop reps before full elbow extension. Pain >2–3/10 = stop immediately.'},
+        {name:'A2 · Cable or DB Row',sets:4,reps:'8–10',weight:'60–70 lbs DBs / 120 lbs cable',rest:'90 sec',note:'Superset with A1',choices:['Cable Row','DB Row']},
+        {name:'B1 · Lat pulldown',sets:3,reps:'8–10',weight:'100–120 lbs',rest:'60 sec'},
+        {name:'B2 · Cable chest fly',sets:3,reps:'12–15',weight:'25–30 lbs/side',rest:'60 sec',note:'Superset with B1'},
+        {name:'Face pulls (rear delt + rotator cuff)',sets:3,reps:'12–15',weight:'40–50 lbs',rest:'60 sec'},
+        {name:'Lateral raises',sets:3,reps:'12–15',weight:'15–20 lbs',rest:'60 sec'},
+        {name:'Biceps curls',sets:2,reps:'12',weight:'30–35 lbs DBs',rest:'60 sec'},
       ]},
-      { label:'Cardio Finisher', type:'cardio', items:[
-        { name:'Elliptical — moderate effort', duration:'15 min', intensity:'Level 6–7', hr:'130–145 bpm' },
+      {label:'Cardio Finisher',type:'cardio',items:[
+        {name:'Elliptical — moderate effort',duration:'15 min',intensity:'Level 6–7',hr:'130–145 bpm'},
       ]},
-      { label:'Cool-down', type:'text', text:'Full body stretch — upper focus · 8–10 min' },
+      {label:'Cool-down',type:'text',text:'Full body stretch — upper focus · 8–10 min'},
     ],
     coach:'Superset A1/A2 (chest + rows) to save time and balance push/pull load. Face pulls before pressing = rotator cuff insurance. Machine press only — find pain-free arc, stop before full lockout.'
   },
-  1: {
-    sections: [
-      { label:'Warm-up', type:'cardio', items:[
-        { name:'Elliptical — light resistance', duration:'10 min', intensity:'Level 3–4', hr:'<115 bpm' },
+  1:{
+    sections:[
+      {label:'Warm-up',type:'cardio',items:[
+        {name:'Elliptical — light resistance',duration:'10 min',intensity:'Level 3–4',hr:'<115 bpm'},
       ]},
-      { label:'Zone 2 Cardio', type:'cardio', items:[
-        { name:'Elliptical — steady state', duration:'20 min', intensity:'Conversational pace', hr:'115–135 bpm' },
-        { name:'Stair stepper', duration:'15 min', intensity:'Moderate, consistent', hr:'115–135 bpm' },
-        { name:'Stationary bike — higher cadence', duration:'10–15 min', intensity:'80–90 RPM, low resistance', hr:'115–135 bpm' },
+      {label:'Zone 2 Cardio',type:'cardio',items:[
+        {name:'Elliptical — steady state',duration:'20 min',intensity:'Conversational pace',hr:'115–135 bpm'},
+        {name:'Stair stepper',duration:'15 min',intensity:'Moderate, consistent',hr:'115–135 bpm'},
+        {name:'Stationary bike — higher cadence',duration:'10–15 min',intensity:'80–90 RPM, low resistance',hr:'115–135 bpm'},
       ]},
-      { label:'Mobility Circuit', type:'mobility', items:[
-        { name:'Kneeling lunge stretch', area:'Hip flexors (priority)', duration:'2 min/side' },
-        { name:'90/90 hip stretch', area:'Hip flexors (priority)', duration:'2 min/side' },
-        { name:'Foam roller T-spine extension', area:'Thoracic spine (priority)', duration:'3 min' },
-        { name:'Thread-the-needle', area:'Thoracic spine', duration:'2 min' },
-        { name:'Pigeon pose / figure-4 stretch', area:'Hips / glutes', duration:'90 sec/side' },
-        { name:'Wall slides — floor version', area:'Shoulders', duration:'2–3 × 10–12 reps' },
-        { name:'Wall slides — standing', area:'Shoulders / thoracic', duration:'2–3 × 10–12 reps' },
-        { name:'Knee-over-toe rocks', area:'Ankles', duration:'3 × 15/side' },
-        { name:'Calf stretch', area:'Ankles', duration:'90 sec/side' },
-        { name:"Cat-cow / child's pose", area:'Core / lumbar', duration:'3 min' },
+      {label:'Mobility Circuit',type:'mobility',items:[
+        {name:'Kneeling lunge stretch',area:'Hip flexors (priority)',duration:'2 min/side'},
+        {name:'90/90 hip stretch',area:'Hip flexors (priority)',duration:'2 min/side'},
+        {name:'Foam roller T-spine extension',area:'Thoracic spine (priority)',duration:'3 min'},
+        {name:'Thread-the-needle',area:'Thoracic spine',duration:'2 min'},
+        {name:'Pigeon pose / figure-4 stretch',area:'Hips / glutes',duration:'90 sec/side'},
+        {name:'Wall slides — floor version',area:'Shoulders',duration:'2–3 × 10–12 reps'},
+        {name:'Wall slides — standing',area:'Shoulders / thoracic',duration:'2–3 × 10–12 reps'},
+        {name:'Knee-over-toe rocks',area:'Ankles',duration:'3 × 15/side'},
+        {name:'Calf stretch',area:'Ankles',duration:'90 sec/side'},
+        {name:"Cat-cow / child's pose",area:'Core / lumbar',duration:'3 min'},
       ]},
-      { label:'Cool-down', type:'text', text:'Full body stretch · 8–10 min' },
+      {label:'Cool-down',type:'text',text:'Full body stretch · 8–10 min'},
     ],
     coach:"Zone 2 = you can hold a full conversation but feel mild effort. Spend 12–15 min on hip flexors and thoracic spine — direct carryover to Wed/Fri lifting. Wall slides are zero elbow load — perfect during triceps recovery."
   },
-  2: {
-    sections: [
-      { label:'Warm-up', type:'exercises', items:[
-        { name:'Elliptical — light resistance', sets:1, reps:'10 min', weight:'Level 3–4', rest:null },
-        { name:'Hip circles + leg swings', sets:1, reps:'2 min', weight:'Bodyweight', rest:null },
-        { name:'Knee-over-toe rocks', sets:3, reps:'15/side', weight:'Bodyweight', rest:'30 sec' },
-        { name:'Bodyweight squat to depth', sets:2, reps:'10', weight:'Bodyweight', rest:'30 sec' },
+  2:{
+    sections:[
+      {label:'Warm-up',type:'exercises',items:[
+        {name:'Elliptical — light resistance',sets:1,reps:'10 min',weight:'Level 3–4',rest:null},
+        {name:'Hip circles + leg swings',sets:1,reps:'2 min',weight:'Bodyweight',rest:null},
+        {name:'Knee-over-toe rocks',sets:3,reps:'15/side',weight:'Bodyweight',rest:'30 sec'},
+        {name:'Bodyweight squat to depth',sets:2,reps:'10',weight:'Bodyweight',rest:'30 sec'},
       ]},
-      { label:'Main Work', type:'exercises', items:[
-        { name:'Goblet squat or leg press', sets:4, reps:'6–8', weight:'60–70 lbs DB / 180–220 lbs press', rest:'2–3 min' },
-        { name:'Romanian deadlift (DBs)', sets:4, reps:'8', weight:'60–75 lbs DBs', rest:'2 min' },
-        { name:'Bulgarian split squat', sets:3, reps:'8/leg', weight:'25–35 lbs DBs', rest:'90 sec' },
-        { name:'Leg press (if not used above)', sets:3, reps:'10', weight:'180–220 lbs', rest:'90 sec' },
-        { name:'Lying leg curl (machine)', sets:3, reps:'12', weight:'60–80 lbs', rest:'60 sec' },
-        { name:'Calf raise — seated or standing', sets:3, reps:'15–20', weight:'50–70 lbs', rest:'60 sec' },
-        { name:'Hip abductor machine', sets:2, reps:'15', weight:'60–80 lbs', rest:'60 sec' },
+      {label:'Main Work',type:'exercises',items:[
+        {name:'Goblet Squat or Leg Press',sets:4,reps:'6–8',weight:'60–70 lbs DB / 180–220 lbs press',rest:'2–3 min',choices:['Goblet Squat','Leg Press']},
+        {name:'Romanian Deadlift',sets:4,reps:'8',weight:'60–75 lbs DBs / 135–185 lbs barbell',rest:'2 min',choices:['DB Romanian Deadlift','Barbell Romanian Deadlift']},
+        {name:'Bulgarian split squat',sets:3,reps:'8/leg',weight:'25–35 lbs DBs',rest:'90 sec'},
+        {name:'Leg press (if not used above)',sets:3,reps:'10',weight:'180–220 lbs',rest:'90 sec'},
+        {name:'Lying leg curl (machine)',sets:3,reps:'12',weight:'60–80 lbs',rest:'60 sec'},
+        {name:'Calf raise — seated or standing',sets:3,reps:'15–20',weight:'50–70 lbs',rest:'60 sec'},
+        {name:'Hip abductor machine',sets:2,reps:'15',weight:'60–80 lbs',rest:'60 sec'},
       ]},
-      { label:'Core Circuit — 3 rounds', type:'exercises', items:[
-        { name:'Dead bug', sets:3, reps:'10/side', weight:'Bodyweight', rest:'30 sec' },
-        { name:'Pallof press', sets:3, reps:'10/side', weight:'20–30 lbs cable', rest:'30 sec' },
-        { name:'Plank', sets:3, reps:'30–45 sec', weight:'Bodyweight', rest:'30 sec' },
-        { name:'Glute bridge', sets:3, reps:'15', weight:'BW or 25 lb plate', rest:'30 sec' },
+      {label:'Core Circuit — 3 rounds',type:'exercises',items:[
+        {name:'Dead bug',sets:3,reps:'10/side',weight:'Bodyweight',rest:'30 sec'},
+        {name:'Pallof press',sets:3,reps:'10/side',weight:'20–30 lbs cable',rest:'30 sec'},
+        {name:'Plank',sets:3,reps:'30–45 sec',weight:'Bodyweight',rest:'30 sec'},
+        {name:'Glute bridge',sets:3,reps:'15',weight:'BW or 25 lb plate',rest:'30 sec'},
       ]},
-      { label:'Cool-down', type:'text', text:'Full body stretch — lower focus · 8–10 min' },
+      {label:'Cool-down',type:'text',text:'Full body stretch — lower focus · 8–10 min'},
     ],
-    coach:'Hip hinge on RDL is your most important injury-prevention pattern. Push hips back, soft knee, DBs close to legs. Split squat — go lighter than you think and earn the weight.'
+    coach:'Hip hinge on RDL is your most important injury-prevention pattern. Push hips back, soft knee, implement close to legs. Split squat — go lighter than you think and earn the weight.'
   },
-  3: {
-    sections: [
-      { label:'Warm-up', type:'cardio', items:[
-        { name:'Elliptical — very light', duration:'10 min', intensity:'Level 2–3', hr:'<110 bpm' },
+  3:{
+    sections:[
+      {label:'Warm-up',type:'cardio',items:[
+        {name:'Elliptical — very light',duration:'10 min',intensity:'Level 2–3',hr:'<110 bpm'},
       ]},
-      { label:'Interval Block', type:'interval', protocol:'thursday' },
-      { label:'Zone 2 Cool-Down Cardio', type:'cardio', items:[
-        { name:'Elliptical or bike — easy', duration:'15–20 min', intensity:'Conversational', hr:'115–135 bpm' },
+      {label:'Interval Block',type:'interval',protocol:'thursday'},
+      {label:'Zone 2 Cool-Down Cardio',type:'cardio',items:[
+        {name:'Elliptical or bike — easy',duration:'15–20 min',intensity:'Conversational',hr:'115–135 bpm'},
       ]},
-      { label:'Mobility', type:'mobility', items:[
-        { name:'Foam roll — quads, IT band, upper back, lats', area:'Full body', duration:'5–6 min' },
-        { name:'Kneeling lunge / couch stretch', area:'Hip flexors', duration:'90 sec/side' },
-        { name:'Foam roller T-spine extension + rotations', area:'Thoracic spine', duration:'4 min' },
-        { name:'Full body stretch — 30–45 sec holds', area:'All areas', duration:'8 min' },
+      {label:'Mobility',type:'mobility',items:[
+        {name:'Foam roll — quads, IT band, upper back, lats',area:'Full body',duration:'5–6 min'},
+        {name:'Kneeling lunge / couch stretch',area:'Hip flexors',duration:'90 sec/side'},
+        {name:'Foam roller T-spine extension + rotations',area:'Thoracic spine',duration:'4 min'},
+        {name:'Full body stretch — 30–45 sec holds',area:'All areas',duration:'8 min'},
       ]},
-      { label:'Cool-down', type:'text', text:'Full body stretch · 8–10 min' },
+      {label:'Cool-down',type:'text',text:'Full body stretch · 8–10 min'},
     ],
     coach:'Thursday is intentionally a recovery driver. The 1:2 work-to-rest ratio means you can hit true intensity every round. Use bike rather than stair stepper if legs are sore from Wednesday.'
   },
-  4: {
-    sections: [
-      { label:'Warm-up', type:'exercises', items:[
-        { name:'Elliptical — light resistance', sets:1, reps:'10 min', weight:'Level 3–4', rest:null },
-        { name:'Dynamic stretch circuit', sets:1, reps:'3 min', weight:'Bodyweight', rest:null },
+  4:{
+    sections:[
+      {label:'Warm-up',type:'exercises',items:[
+        {name:'Elliptical — light resistance',sets:1,reps:'10 min',weight:'Level 3–4',rest:null},
+        {name:'Dynamic stretch circuit',sets:1,reps:'3 min',weight:'Bodyweight',rest:null},
       ]},
-      { label:'Main Work — Compound Focus', type:'exercises', items:[
-        { name:'DB or trap bar deadlift', sets:3, reps:'6–8', weight:'80–100 lbs DBs / 185–225 lbs trap', rest:'90 sec' },
-        { name:'Incline DB press', sets:3, reps:'10', weight:'40–50% of normal load', rest:'90 sec', injury:true, injuryNote:'Light load only — 40–50% normal. Stop reps before full elbow extension. Pain >2–3/10 = stop the set.' },
-        { name:'Single-arm DB row', sets:3, reps:'10/side', weight:'60–75 lbs', rest:'90 sec' },
-        { name:'Goblet squat', sets:3, reps:'12', weight:'50–60 lbs DB', rest:'90 sec' },
-        { name:'Farmer carries', sets:3, reps:'40 yards', weight:'50–60 lbs/hand', rest:'60 sec' },
-        { name:'Pallof press / cable rotation', sets:2, reps:'10/side', weight:'25–35 lbs', rest:'60 sec' },
+      {label:'Main Work — Compound Focus',type:'exercises',items:[
+        {name:'Deadlift',sets:3,reps:'6–8',weight:'80–100 lbs DBs / 185–225 lbs trap bar',rest:'90 sec',choices:['DB Deadlift','Trap Bar Deadlift']},
+        {name:'Incline DB press',sets:3,reps:'10',weight:'40–50% of normal load',rest:'90 sec',injury:true,injuryNote:'Light load only — 40–50% normal. Stop reps before full elbow extension. Pain >2–3/10 = stop the set.'},
+        {name:'Single-arm DB row',sets:3,reps:'10/side',weight:'60–75 lbs',rest:'90 sec'},
+        {name:'Goblet squat',sets:3,reps:'12',weight:'50–60 lbs DB',rest:'90 sec'},
+        {name:'Farmer carries',sets:3,reps:'40 yards',weight:'50–60 lbs/hand',rest:'60 sec'},
+        {name:'Pallof Press or Cable Rotation',sets:2,reps:'10/side',weight:'25–35 lbs',rest:'60 sec',choices:['Pallof Press','Cable Rotation']},
       ]},
-      { label:'HIIT Finisher', type:'interval', protocol:'friday' },
-      { label:'Cool-down', type:'text', text:'Full body stretch · 8–10 min' },
+      {label:'HIIT Finisher',type:'interval',protocol:'friday'},
+      {label:'Cool-down',type:'text',text:'Full body stretch · 8–10 min'},
     ],
     coach:"Deadlift at 6–8 reps (not 10) preserves strength stimulus without CNS burnout at end of week. HIIT finisher drives VO2 max — different adaptation from Thursday's longer intervals. One per week is sufficient."
   },
-  5:{ rest:true },
-  6:{ rest:true }
+  5:{rest:true},
+  6:{rest:true}
 };
 
-let currentDay = new Date().getDay();
-currentDay = currentDay === 0 ? 6 : currentDay - 1;
+let currentDay=new Date().getDay();
+currentDay=currentDay===0?6:currentDay-1;
 
-let completedSets = JSON.parse(localStorage.getItem('wk_sets') || '{}');
-let setWeights = JSON.parse(localStorage.getItem('wk_weights') || '{}');
-let setReps = JSON.parse(localStorage.getItem('wk_reps') || '{}');
-let sessionHistory = JSON.parse(localStorage.getItem('wk_history') || '{}');
-let notes = JSON.parse(localStorage.getItem('wk_notes') || '{}');
-let timerInterval = null;
-let timerSeconds = 0;
-let timerRunning = false;
-let mobTimers = {};
-let intervalTimer = null;
-let intervalRunning = false;
-let intervalState = { phase:'work', round:1, seconds:0, protocol:'' };
+let completedSets   =JSON.parse(localStorage.getItem('wk_sets')||'{}');
+let setWeights      =JSON.parse(localStorage.getItem('wk_weights')||'{}');
+let setReps         =JSON.parse(localStorage.getItem('wk_reps')||'{}');
+let sessionHistory  =JSON.parse(localStorage.getItem('wk_history')||'{}');
+let notes           =JSON.parse(localStorage.getItem('wk_notes')||'{}');
+let cardioNotes     =JSON.parse(localStorage.getItem('wk_cardionotes')||'{}');
+let choiceSelections=JSON.parse(localStorage.getItem('wk_choices')||'{}');
+let openCardioNotes ={};
 
-function saveData() {
-  localStorage.setItem('wk_sets', JSON.stringify(completedSets));
-  localStorage.setItem('wk_weights', JSON.stringify(setWeights));
-  localStorage.setItem('wk_reps', JSON.stringify(setReps));
-  localStorage.setItem('wk_history', JSON.stringify(sessionHistory));
-  localStorage.setItem('wk_notes', JSON.stringify(notes));
+let timerInterval=null,timerSeconds=0,timerRunning=false;
+let mobTimers={};
+let intervalTimer=null,intervalRunning=false;
+let intervalState={phase:'work',round:1,seconds:0,protocol:''};
+
+function saveData(){
+  localStorage.setItem('wk_sets',JSON.stringify(completedSets));
+  localStorage.setItem('wk_weights',JSON.stringify(setWeights));
+  localStorage.setItem('wk_reps',JSON.stringify(setReps));
+  localStorage.setItem('wk_history',JSON.stringify(sessionHistory));
+  localStorage.setItem('wk_notes',JSON.stringify(notes));
+  localStorage.setItem('wk_cardionotes',JSON.stringify(cardioNotes));
+  localStorage.setItem('wk_choices',JSON.stringify(choiceSelections));
 }
 
-function setKey(day, sec, idx) { return `d${day}_s${sec}_i${idx}`; }
-function noteKey(day, sec, idx) { return `n${day}_s${sec}_i${idx}`; }
-function weightKey(day, sec, idx, setNum) { return `d${day}_s${sec}_i${idx}_set${setNum}_w`; }
-function repsKey(day, sec, idx, setNum) { return `d${day}_s${sec}_i${idx}_set${setNum}_r`; }
-function historyKey(day, sec, idx) { return `hist_d${day}_s${sec}_i${idx}`; }
+function setKey(d,s,i){return `d${d}_s${s}_i${i}`;}
+function noteKey(d,s,i){return `n${d}_s${s}_i${i}`;}
+function weightKey(d,s,i,n){return `d${d}_s${s}_i${i}_set${n}_w`;}
+function repsKey(d,s,i,n){return `d${d}_s${s}_i${i}_set${n}_r`;}
+function historyKey(d,s,i){return `hist_d${d}_s${s}_i${i}`;}
+function choiceKey(d,s,i){return `ch_d${d}_s${s}_i${i}`;}
+function cardioNoteKey(d,s,i){return `cn_d${d}_s${s}_i${i}`;}
 
-function getLastSession(day, sec, idx) {
-  const k = historyKey(day, sec, idx);
-  return sessionHistory[k] || null;
+function saveNote(k,v){notes[k]=v;saveData();}
+function saveCardioNote(k,v){cardioNotes[k]=v;saveData();}
+function saveWeight(k,v){setWeights[k]=v;saveData();}
+function saveRepsVal(k,v){setReps[k]=v;saveData();}
+
+// Round DOWN to nearest 5-lb increment
+function roundDown5(val){return Math.floor(val/5)*5;}
+
+// Returns suggestion object or null
+// Locks weight at rounded-down value until 3 consecutive sessions all reps hit
+function getSuggestion(d,s,i,targetReps){
+  const hk=historyKey(d,s,i);
+  const raw=sessionHistory[hk];
+  if(!raw) return null;
+  const sessions=Array.isArray(raw)?raw:[raw];
+  if(!sessions.length) return null;
+
+  const repRange=targetReps?targetReps.replace(/\/.*/,'').split('–'):null;
+  const topRep=repRange?parseInt(repRange[repRange.length-1]):null;
+
+  const last=sessions[sessions.length-1];
+  const avgW=last.sets.reduce((a,b)=>a+(b.weight||0),0)/(last.sets.length||1);
+  if(!avgW) return null;
+
+  // Count consecutive sessions where all sets hit topRep at approx same weight
+  let streak=0;
+  for(let j=sessions.length-1;j>=0;j--){
+    const sess=sessions[j];
+    const sAvg=sess.sets.reduce((a,b)=>a+(b.weight||0),0)/(sess.sets.length||1);
+    const allHit=topRep?sess.sets.every(s=>s.reps>=topRep):false;
+    if(allHit&&Math.abs(sAvg-avgW)<3){streak++;}else{break;}
+  }
+
+  if(streak>=3){
+    // Progress: raw +5, rounded down to nearest 5
+    const nextRaw=avgW+5;
+    const nextRounded=roundDown5(nextRaw);
+    return{weight:nextRounded,note:`Ready to progress → ${nextRounded} lbs (rounded down to nearest 5)`,locked:false,streak};
+  } else {
+    // Stay: round current weight down to nearest 5
+    const stayRounded=roundDown5(avgW);
+    return{weight:stayRounded,note:`Stay at ${stayRounded} lbs — hit all reps ${streak}/3 sessions needed`,locked:true,streak};
+  }
 }
 
-function saveWeight(k, val) { setWeights[k] = val; saveData(); }
-function saveReps(k, val) { setReps[k] = val; saveData(); }
-function saveNote(k, val) { notes[k] = val; saveData(); }
+function selectChoice(d,s,i,choice){
+  choiceSelections[choiceKey(d,s,i)]=choice;
+  saveData();renderDay();
+}
 
-function toggleSet(day, sec, idx, setNum) {
-  const k = setKey(day, sec, idx);
-  if (!completedSets[k]) completedSets[k] = [];
-  const pos = completedSets[k].indexOf(setNum);
-  if (pos === -1) completedSets[k].push(setNum);
-  else completedSets[k].splice(pos, 1);
-  saveData();
+function toggleCardioNotes(k){
+  openCardioNotes[k]=!openCardioNotes[k];
   renderDay();
 }
 
-function getSuggestion(day, sec, idx, targetReps) {
-  const last = getLastSession(day, sec, idx);
-  if (!last || !last.sets || last.sets.length === 0) return null;
-  const allHitTarget = last.sets.every(s => {
-    const repRange = targetReps ? targetReps.split('–') : null;
-    const topRep = repRange ? parseInt(repRange[repRange.length - 1]) : null;
-    return topRep ? s.reps >= topRep : false;
-  });
-  const avgWeight = last.sets.reduce((a, b) => a + (b.weight || 0), 0) / last.sets.length;
-  if (allHitTarget && avgWeight > 0) {
-    return { weight: avgWeight + 5, note: '+5 lbs — hit all reps last session' };
-  }
-  if (avgWeight > 0) {
-    return { weight: avgWeight, note: 'Same weight — keep building reps' };
-  }
-  return null;
+function toggleSet(d,s,i,n){
+  const k=setKey(d,s,i);
+  if(!completedSets[k])completedSets[k]=[];
+  const pos=completedSets[k].indexOf(n);
+  if(pos===-1)completedSets[k].push(n);
+  else completedSets[k].splice(pos,1);
+  saveData();renderDay();
 }
 
-function saveSessionAndReset(day) {
-  const workout = WORKOUTS[day];
-  if (!workout || workout.rest) return;
-  workout.sections.forEach((sec, secIdx) => {
-    if (sec.type !== 'exercises') return;
-    sec.items.forEach((ex, exIdx) => {
-      const k = setKey(day, secIdx, exIdx);
-      const done = completedSets[k] || [];
-      if (done.length === 0) return;
-      const sets = done.map(setNum => ({
-        setNum,
-        weight: parseFloat(setWeights[weightKey(day, secIdx, exIdx, setNum)]) || 0,
-        reps: parseInt(setReps[repsKey(day, secIdx, exIdx, setNum)]) || 0
+function saveSessionAndReset(day){
+  const workout=WORKOUTS[day];
+  if(!workout||workout.rest) return;
+  workout.sections.forEach((sec,secIdx)=>{
+    if(sec.type!=='exercises') return;
+    sec.items.forEach((ex,exIdx)=>{
+      const k=setKey(day,secIdx,exIdx);
+      const done=completedSets[k]||[];
+      if(!done.length) return;
+      const sets=done.map(n=>({
+        setNum:n,
+        weight:parseFloat(setWeights[weightKey(day,secIdx,exIdx,n)])||0,
+        reps:parseInt(setReps[repsKey(day,secIdx,exIdx,n)])||0
       }));
-      const hk = historyKey(day, secIdx, exIdx);
-      sessionHistory[hk] = { date: new Date().toLocaleDateString(), sets };
+      const hk=historyKey(day,secIdx,exIdx);
+      const existing=sessionHistory[hk];
+      let arr=Array.isArray(existing)?existing:(existing?[existing]:[]);
+      arr.push({date:new Date().toLocaleDateString(),sets});
+      if(arr.length>3)arr=arr.slice(-3);
+      sessionHistory[hk]=arr;
     });
   });
-  const keys = Object.keys(completedSets).filter(k => k.startsWith(`d${day}_`));
-  keys.forEach(k => delete completedSets[k]);
-  saveData();
-  renderDay();
+  Object.keys(completedSets).filter(k=>k.startsWith(`d${day}_`)).forEach(k=>delete completedSets[k]);
+  saveData();renderDay();
 }
 
-function exportData() {
-  const lines = ['MY WORKOUT LOG — ' + new Date().toLocaleDateString(), ''];
-  const dayNames = ['Monday','Tuesday','Wednesday','Thursday','Friday'];
-  [0,1,2,3,4].forEach(day => {
-    const workout = WORKOUTS[day];
-    if (!workout || workout.rest) return;
-    let dayHasData = false;
-    workout.sections.forEach((sec, secIdx) => {
-      if (sec.type !== 'exercises') return;
-      sec.items.forEach((ex, exIdx) => {
-        const hk = historyKey(day, secIdx, exIdx);
-        const hist = sessionHistory[hk];
-        if (!hist) return;
-        if (!dayHasData) { lines.push('=== ' + dayNames[day] + ' ==='); dayHasData = true; }
-        lines.push(ex.name + ' (' + hist.date + ')');
-        hist.sets.forEach(s => {
-          lines.push('  Set ' + s.setNum + ': ' + (s.weight ? s.weight + ' lbs' : '—') + ' × ' + (s.reps || '—') + ' reps');
+function exportData(){
+  const lines=['MY WORKOUT LOG — '+new Date().toLocaleDateString(),''];
+  [0,2,4].forEach(day=>{
+    const workout=WORKOUTS[day];
+    if(!workout||workout.rest) return;
+    let dayHas=false;
+    workout.sections.forEach((sec,secIdx)=>{
+      if(sec.type!=='exercises') return;
+      sec.items.forEach((ex,exIdx)=>{
+        const hk=historyKey(day,secIdx,exIdx);
+        const hist=sessionHistory[hk];
+        if(!hist) return;
+        const sessions=Array.isArray(hist)?hist:[hist];
+        if(!dayHas){lines.push('=== '+FULL_DAYS[day]+' ===');dayHas=true;}
+        lines.push(ex.name);
+        sessions.forEach(sess=>{
+          lines.push('  '+sess.date+':');
+          sess.sets.forEach(s=>lines.push('    Set '+s.setNum+': '+(s.weight||'—')+' lbs × '+(s.reps||'—')+' reps'));
         });
         lines.push('');
       });
     });
   });
-  const blob = new Blob([lines.join('\n')], { type:'text/plain' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url; a.download = 'workout-log.txt'; a.click();
+  const blob=new Blob([lines.join('\n')],{type:'text/plain'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  a.href=url;a.download='workout-log.txt';a.click();
   URL.revokeObjectURL(url);
 }
 
-function buildTabs() {
-  const container = document.getElementById('dayTabs');
-  container.innerHTML = '';
-  DAYS.forEach((d, i) => {
-    const btn = document.createElement('button');
-    const isRest = i >= 5;
-    btn.className = 'day-tab ' + (i === currentDay ? 'active' : isRest ? 'rest' : 'inactive');
-    btn.textContent = d;
-    btn.onclick = () => { currentDay = i; buildTabs(); renderDay(); };
+function buildTabs(){
+  const container=document.getElementById('dayTabs');
+  container.innerHTML='';
+  DAYS.forEach((d,i)=>{
+    const btn=document.createElement('button');
+    const isRest=i>=5;
+    btn.className='day-tab '+(i===currentDay?'active':isRest?'rest':'inactive');
+    btn.textContent=d;
+    btn.onclick=()=>{currentDay=i;buildTabs();renderDay();};
     container.appendChild(btn);
   });
 }
 
-function openRestTimer(seconds, label) {
-  timerSeconds = seconds;
-  timerRunning = false;
-  clearInterval(timerInterval);
-  document.getElementById('timerLabel').textContent = label || 'Rest Timer';
-  document.getElementById('timerDisplay').textContent = formatTime(seconds);
-  document.getElementById('timerDisplay').className = 'timer-display';
-  document.getElementById('timerStartBtn').textContent = 'Start';
+function openRestTimer(seconds,label){
+  timerSeconds=seconds;timerRunning=false;clearInterval(timerInterval);
+  document.getElementById('timerLabel').textContent=label||'Rest Timer';
+  document.getElementById('timerDisplay').textContent=formatTime(seconds);
+  document.getElementById('timerDisplay').className='timer-display';
+  document.getElementById('timerStartBtn').textContent='Start';
   document.getElementById('timerOverlay').classList.add('visible');
 }
-
-function toggleTimer() {
-  if (timerRunning) {
-    clearInterval(timerInterval);
-    timerRunning = false;
-    document.getElementById('timerStartBtn').textContent = 'Resume';
-    document.getElementById('timerDisplay').className = 'timer-display';
+function toggleTimer(){
+  if(timerRunning){
+    clearInterval(timerInterval);timerRunning=false;
+    document.getElementById('timerStartBtn').textContent='Resume';
+    document.getElementById('timerDisplay').className='timer-display';
   } else {
-    timerRunning = true;
-    document.getElementById('timerStartBtn').textContent = 'Pause';
-    timerInterval = setInterval(() => {
+    timerRunning=true;
+    document.getElementById('timerStartBtn').textContent='Pause';
+    timerInterval=setInterval(()=>{
       timerSeconds--;
-      if (timerSeconds <= 0) {
-        timerSeconds = 0;
-        clearInterval(timerInterval);
-        timerRunning = false;
-        document.getElementById('timerStartBtn').textContent = 'Done!';
-        document.getElementById('timerDisplay').className = 'timer-display done';
-        if (navigator.vibrate) navigator.vibrate([200,100,200]);
+      if(timerSeconds<=0){
+        timerSeconds=0;clearInterval(timerInterval);timerRunning=false;
+        document.getElementById('timerStartBtn').textContent='Done!';
+        document.getElementById('timerDisplay').className='timer-display done';
+        if(navigator.vibrate)navigator.vibrate([200,100,200]);
       }
-      const el = document.getElementById('timerDisplay');
-      if (el) el.textContent = formatTime(timerSeconds);
-    }, 1000);
+      const el=document.getElementById('timerDisplay');
+      if(el)el.textContent=formatTime(timerSeconds);
+    },1000);
   }
 }
+function closeTimer(){clearInterval(timerInterval);timerRunning=false;document.getElementById('timerOverlay').classList.remove('visible');}
+function formatTime(s){return Math.floor(s/60)+':'+(s%60<10?'0':'')+s%60;}
 
-function closeTimer() {
-  clearInterval(timerInterval);
-  timerRunning = false;
-  document.getElementById('timerOverlay').classList.remove('visible');
-}
-
-function formatTime(s) {
-  return Math.floor(s/60) + ':' + (s%60 < 10 ? '0' : '') + s%60;
-}
-
-function startIntervalTimer(protocol) {
-  const config = protocol === 'thursday'
-    ? { workSec:60, restSec:120, totalRounds:6 }
-    : { workSec:30, restSec:90, totalRounds:5 };
-  if (intervalRunning) {
-    clearInterval(intervalTimer);
-    intervalRunning = false;
-    intervalState = { phase:'work', round:1, seconds:config.workSec, protocol };
-    renderDay(); return;
-  }
-  intervalState = { phase:'work', round:1, seconds:config.workSec, protocol, config };
-  intervalRunning = true;
-  intervalTimer = setInterval(() => {
+function startIntervalTimer(protocol){
+  const config=protocol==='thursday'?{workSec:60,restSec:120,totalRounds:6}:{workSec:30,restSec:90,totalRounds:5};
+  if(intervalRunning){clearInterval(intervalTimer);intervalRunning=false;intervalState={phase:'work',round:1,seconds:config.workSec,protocol};renderDay();return;}
+  intervalState={phase:'work',round:1,seconds:config.workSec,protocol,config};intervalRunning=true;
+  intervalTimer=setInterval(()=>{
     intervalState.seconds--;
-    if (intervalState.seconds <= 0) {
-      if (intervalState.phase === 'work') {
-        intervalState.phase = 'rest'; intervalState.seconds = intervalState.config.restSec;
-        if (navigator.vibrate) navigator.vibrate([100]);
-      } else {
+    if(intervalState.seconds<=0){
+      if(intervalState.phase==='work'){intervalState.phase='rest';intervalState.seconds=intervalState.config.restSec;if(navigator.vibrate)navigator.vibrate([100]);}
+      else{
         intervalState.round++;
-        if (intervalState.round > intervalState.config.totalRounds) {
-          clearInterval(intervalTimer); intervalRunning = false;
-          if (navigator.vibrate) navigator.vibrate([200,100,200,100,200]);
-          intervalState = { phase:'done', round:intervalState.config.totalRounds, seconds:0, protocol, config:intervalState.config };
-          renderDay(); return;
+        if(intervalState.round>intervalState.config.totalRounds){
+          clearInterval(intervalTimer);intervalRunning=false;
+          if(navigator.vibrate)navigator.vibrate([200,100,200,100,200]);
+          intervalState={phase:'done',round:intervalState.config.totalRounds,seconds:0,protocol,config:intervalState.config};
+          renderDay();return;
         }
-        intervalState.phase = 'work'; intervalState.seconds = intervalState.config.workSec;
-        if (navigator.vibrate) navigator.vibrate([200]);
+        intervalState.phase='work';intervalState.seconds=intervalState.config.workSec;if(navigator.vibrate)navigator.vibrate([200]);
       }
     }
     updateIntervalDisplay();
-  }, 1000);
+  },1000);
   renderDay();
 }
 
-function updateIntervalDisplay() {
-  const phaseEl = document.getElementById('int_phase');
-  const timeEl = document.getElementById('int_time');
-  const roundEl = document.getElementById('int_rounds');
-  if (!phaseEl) return;
-  const totalRounds = intervalState.config ? intervalState.config.totalRounds : 6;
-  phaseEl.textContent = intervalState.phase === 'done' ? 'Complete!' : intervalState.phase === 'work' ? 'Work' : 'Rest';
-  phaseEl.className = 'interval-phase ' + (intervalState.phase === 'work' ? 'work' : intervalState.phase === 'rest' ? 'rest' : '');
-  if (timeEl) timeEl.textContent = intervalState.phase === 'done' ? '0:00' : formatTime(intervalState.seconds);
-  if (roundEl) roundEl.textContent = 'Round ' + Math.min(intervalState.round, totalRounds) + ' of ' + totalRounds;
+function updateIntervalDisplay(){
+  const phaseEl=document.getElementById('int_phase');
+  const timeEl=document.getElementById('int_time');
+  const roundEl=document.getElementById('int_rounds');
+  if(!phaseEl)return;
+  const totalRounds=intervalState.config?intervalState.config.totalRounds:6;
+  phaseEl.textContent=intervalState.phase==='done'?'Complete!':intervalState.phase==='work'?'Work':'Rest';
+  phaseEl.className='interval-phase '+(intervalState.phase==='work'?'work':intervalState.phase==='rest'?'rest':'');
+  if(timeEl)timeEl.textContent=intervalState.phase==='done'?'0:00':formatTime(intervalState.seconds);
+  if(roundEl)roundEl.textContent='Round '+Math.min(intervalState.round,totalRounds)+' of '+totalRounds;
 }
 
-function renderExercise(ex, dayIdx, secIdx, exIdx) {
-  const k = setKey(dayIdx, secIdx, exIdx);
-  const nk = noteKey(dayIdx, secIdx, exIdx);
-  const done = completedSets[k] || [];
-  const total = ex.sets || 1;
-  const pct = Math.round((done.length / total) * 100);
-  const isOpen = (window._openCards || {})[k];
-  const suggestion = ex.sets > 1 ? getSuggestion(dayIdx, secIdx, exIdx, ex.reps) : null;
+function renderExercise(ex,dayIdx,secIdx,exIdx){
+  const k=setKey(dayIdx,secIdx,exIdx);
+  const nk=noteKey(dayIdx,secIdx,exIdx);
+  const ck=choiceKey(dayIdx,secIdx,exIdx);
+  const done=completedSets[k]||[];
+  const total=ex.sets||1;
+  const pct=Math.round((done.length/total)*100);
+  const isOpen=(window._openCards||{})[k];
+  const suggestion=ex.sets>1?getSuggestion(dayIdx,secIdx,exIdx,ex.reps):null;
+  const selectedChoice=ex.choices?(choiceSelections[ck]||ex.choices[0]):null;
 
-  let html = `<div class="exercise-card">`;
-  html += `<div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div>`;
-  html += `<div class="exercise-header" onclick="toggleCard('${k}')">`;
-  html += `<div style="flex:1">`;
-  html += `<div class="exercise-name${ex.injury?' injury':''}">${ex.injury?'⚠️ ':''}${ex.name}</div>`;
-  html += `<div class="exercise-meta">`;
-  if (ex.sets) html += `<span class="meta-pill">${ex.sets} × ${ex.reps}</span>`;
-  if (ex.weight) html += `<span class="meta-pill">${ex.weight}</span>`;
-  if (suggestion) html += `<span class="suggestion-badge">↑ ${suggestion.weight} lbs</span>`;
-  html += `</div></div>`;
-  html += `<span class="chevron${isOpen?' open':''}">▼</span>`;
-  html += `</div>`;
+  let html=`<div class="exercise-card">`;
+  html+=`<div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div>`;
+  html+=`<div class="exercise-header" onclick="toggleCard('${k}')">`;
+  html+=`<div style="flex:1">`;
+  html+=`<div class="exercise-name${ex.injury?' injury':''}">${ex.injury?'⚠️ ':''}${ex.name}</div>`;
+  html+=`<div class="exercise-meta">`;
+  if(ex.sets)html+=`<span class="meta-pill">${ex.sets} × ${ex.reps}</span>`;
+  if(ex.weight)html+=`<span class="meta-pill">${ex.weight}</span>`;
+  if(suggestion&&!suggestion.locked)html+=`<span class="suggestion-badge">↑ ${suggestion.weight} lbs</span>`;
+  if(suggestion&&suggestion.locked)html+=`<span class="locked-badge">🔒 ${suggestion.weight} lbs</span>`;
+  html+=`</div></div>`;
+  html+=`<span class="chevron${isOpen?' open':''}">▼</span>`;
+  html+=`</div>`;
 
-  if (isOpen) {
-    html += `<div class="exercise-detail">`;
-    if (ex.injuryNote) html += `<div class="warning-box">⚠️ ${ex.injuryNote}</div>`;
-    if (suggestion) html += `<div style="font-size:13px;color:#30d158;margin:8px 0 4px">💡 ${suggestion.note}</div>`;
+  if(isOpen){
+    html+=`<div class="exercise-detail">`;
+    if(ex.injuryNote)html+=`<div class="warning-box">⚠️ ${ex.injuryNote}</div>`;
 
-    const last = getLastSession(dayIdx, secIdx, exIdx);
+    // Variation selector
+    if(ex.choices){
+      html+=`<div style="font-size:13px;color:#666;margin:10px 0 4px">Select variation for this session:</div>`;
+      html+=`<div class="choice-selector">`;
+      ex.choices.forEach(c=>{
+        html+=`<button class="choice-btn${selectedChoice===c?' selected':''}" onclick="selectChoice(${dayIdx},${secIdx},${exIdx},'${c}')">${c}</button>`;
+      });
+      html+=`</div>`;
+      if(selectedChoice)html+=`<div style="font-size:13px;color:#30d158;margin-bottom:8px">Logging as: ${selectedChoice}</div>`;
+    }
 
-    if (ex.sets && ex.sets > 0) {
-      html += `<div style="font-size:13px;color:#666;margin:10px 0 4px">Log each set — weight (lbs) · reps done:</div>`;
-      html += `<div class="sets-container">`;
-      for (let s = 1; s <= total; s++) {
-        const wk = weightKey(dayIdx, secIdx, exIdx, s);
-        const rk = repsKey(dayIdx, secIdx, exIdx, s);
-        const lastSet = last ? last.sets.find(ls => ls.setNum === s) : null;
-        const wVal = setWeights[wk] || '';
-        const rVal = setReps[rk] || '';
-        html += `<div class="set-row">`;
-        html += `<span class="set-label">Set ${s}</span>`;
-        html += `<input class="set-input" type="number" inputmode="decimal" placeholder="${lastSet ? lastSet.weight || '—' : 'lbs'}" value="${wVal}" onchange="saveWeight('${wk}',this.value)" style="width:68px">`;
-        html += `<span class="set-unit" style="font-size:12px;color:#555">lbs</span>`;
-        html += `<input class="set-input" type="number" inputmode="numeric" placeholder="${lastSet ? lastSet.reps || '—' : 'reps'}" value="${rVal}" onchange="saveReps('${rk}',this.value)" style="width:60px">`;
-        html += `<span class="set-unit" style="font-size:12px;color:#555">reps</span>`;
-        html += `<button class="set-check${done.includes(s)?' done':''}" onclick="toggleSet(${dayIdx},${secIdx},${exIdx},${s})">${done.includes(s)?'✓':'○'}</button>`;
-        html += `</div>`;
+    // Progression suggestion + streak dots
+    if(suggestion){
+      const color=suggestion.locked?'#ff9f0a':'#30d158';
+      const icon=suggestion.locked?'🔒':'✅';
+      html+=`<div style="font-size:13px;color:${color};margin:6px 0 4px">${icon} ${suggestion.note}</div>`;
+      html+=`<div class="streak-bar">`;
+      for(let d=0;d<3;d++){
+        html+=`<div class="streak-dot ${d<suggestion.streak?'hit':'miss'}"></div>`;
       }
-      html += `</div>`;
+      html+=`</div>`;
     }
 
-    if (ex.rest) {
-      const restSecs = {'30 sec':30,'60 sec':60,'90 sec':90,'2 min':120,'2–3 min':150,'3 min':180}[ex.rest] || 60;
-      html += `<button class="rest-timer-btn" onclick="openRestTimer(${restSecs},'Rest: ${ex.rest}')">⏱ Start ${ex.rest} rest</button>`;
+    // Set logging rows
+    if(ex.sets&&ex.sets>0){
+      html+=`<div style="font-size:13px;color:#666;margin:6px 0 4px">Log weight &amp; reps per set:</div>`;
+      html+=`<div class="sets-container">`;
+      const hist=sessionHistory[historyKey(dayIdx,secIdx,exIdx)];
+      const sessions=hist?(Array.isArray(hist)?hist:[hist]):[];
+      const lastSess=sessions.length?sessions[sessions.length-1]:null;
+      for(let s=1;s<=total;s++){
+        const wk=weightKey(dayIdx,secIdx,exIdx,s);
+        const rk=repsKey(dayIdx,secIdx,exIdx,s);
+        const lastSet=lastSess?lastSess.sets.find(ls=>ls.setNum===s):null;
+        const wVal=setWeights[wk]||'';
+        const rVal=setReps[rk]||'';
+        html+=`<div class="set-row">`;
+        html+=`<span class="set-label">Set ${s}</span>`;
+        html+=`<input class="set-input" type="number" inputmode="decimal" placeholder="${lastSet&&lastSet.weight?lastSet.weight:'lbs'}" value="${wVal}" onchange="saveWeight('${wk}',this.value)" style="width:66px">`;
+        html+=`<span class="set-unit">lbs</span>`;
+        html+=`<input class="set-input" type="number" inputmode="numeric" placeholder="${lastSet&&lastSet.reps?lastSet.reps:'reps'}" value="${rVal}" onchange="saveRepsVal('${rk}',this.value)" style="width:56px">`;
+        html+=`<span class="set-unit">reps</span>`;
+        html+=`<button class="set-check${done.includes(s)?' done':''}" onclick="toggleSet(${dayIdx},${secIdx},${exIdx},${s})">${done.includes(s)?'✓':'○'}</button>`;
+        html+=`</div>`;
+      }
+      html+=`</div>`;
     }
-    const savedNote = notes[nk] || '';
-    html += `<textarea class="notes-input" rows="2" placeholder="Additional notes..." onchange="saveNote('${nk}',this.value)">${savedNote}</textarea>`;
-    html += `</div>`;
+
+    if(ex.rest){
+      const restSecs={'30 sec':30,'60 sec':60,'90 sec':90,'2 min':120,'2–3 min':150,'3 min':180}[ex.rest]||60;
+      html+=`<button class="rest-timer-btn" onclick="openRestTimer(${restSecs},'Rest: ${ex.rest}')">⏱ Start ${ex.rest} rest</button>`;
+    }
+    const savedNote=notes[nk]||'';
+    html+=`<textarea class="notes-input" rows="2" placeholder="Additional notes..." onchange="saveNote('${nk}',this.value)">${savedNote}</textarea>`;
+    html+=`</div>`;
   }
-  html += `</div>`;
+  html+=`</div>`;
   return html;
 }
 
-function toggleCard(k) {
-  if (!window._openCards) window._openCards = {};
-  window._openCards[k] = !window._openCards[k];
+function renderCardioItem(item,dayIdx,secIdx,itemIdx){
+  const cnk=cardioNoteKey(dayIdx,secIdx,itemIdx);
+  const isOpen=openCardioNotes[cnk];
+  const savedNote=cardioNotes[cnk]||'';
+  let html=`<div class="cardio-row">`;
+  html+=`<div class="cardio-row-top">`;
+  html+=`<div><div class="cardio-name">${item.name}</div><div class="cardio-detail">${item.duration} · ${item.intensity}</div></div>`;
+  if(item.hr)html+=`<div class="cardio-badge">${item.hr}</div>`;
+  html+=`</div>`;
+  html+=`<button class="cardio-notes-toggle" onclick="toggleCardioNotes('${cnk}')">${isOpen?'▲ Hide notes':'▼ Log session notes'}</button>`;
+  if(isOpen){
+    html+=`<textarea class="notes-input" rows="3" placeholder="Equipment · resistance level · actual HR · duration · how it felt..." onchange="saveCardioNote('${cnk}',this.value)">${savedNote}</textarea>`;
+  } else if(savedNote){
+    html+=`<div class="cardio-note-preview">${savedNote.substring(0,70)}${savedNote.length>70?'…':''}</div>`;
+  }
+  html+=`</div>`;
+  return html;
+}
+
+function toggleCard(k){
+  if(!window._openCards)window._openCards={};
+  window._openCards[k]=!window._openCards[k];
   renderDay();
 }
 
-function startMobTimer(mk) {
-  if (mobTimers[mk] && mobTimers[mk].interval) {
-    clearInterval(mobTimers[mk].interval);
-    delete mobTimers[mk];
-    renderDay(); return;
-  }
-  const getDur = (mk) => {
-    const parts = mk.split('_');
-    const secIdx = parseInt(parts[2]);
-    const mobIdx = parseInt(parts[3]);
-    const sec = WORKOUTS[currentDay]?.sections?.[secIdx];
-    const dur = sec?.items?.[mobIdx]?.duration || '60 sec';
-    if (dur.includes('90 sec')) return 90;
-    if (dur.includes('2 min')) return 120;
-    if (dur.includes('3 min')) return 180;
-    if (dur.includes('4 min')) return 240;
-    if (dur.includes('5') || dur.includes('6')) return 330;
-    if (dur.includes('8')) return 480;
+function startMobTimer(mk){
+  if(mobTimers[mk]&&mobTimers[mk].interval){clearInterval(mobTimers[mk].interval);delete mobTimers[mk];renderDay();return;}
+  const getDur=(mk)=>{
+    const parts=mk.split('_');
+    const secIdx=parseInt(parts[2]);const mobIdx=parseInt(parts[3]);
+    const sec=WORKOUTS[currentDay]?.sections?.[secIdx];
+    const dur=sec?.items?.[mobIdx]?.duration||'60 sec';
+    if(dur.includes('90 sec'))return 90;if(dur.includes('2 min'))return 120;
+    if(dur.includes('3 min'))return 180;if(dur.includes('4 min'))return 240;
+    if(dur.includes('5')||dur.includes('6'))return 330;if(dur.includes('8'))return 480;
     return 60;
   };
-  let secs = getDur(mk);
-  mobTimers[mk] = { secs, display: formatTime(secs) };
-  mobTimers[mk].interval = setInterval(() => {
+  let secs=getDur(mk);
+  mobTimers[mk]={secs,display:formatTime(secs)};
+  mobTimers[mk].interval=setInterval(()=>{
     secs--;
-    if (secs <= 0) {
-      clearInterval(mobTimers[mk].interval);
-      if (navigator.vibrate) navigator.vibrate([200,100,200]);
-      mobTimers[mk].display = 'Done!';
-    } else {
-      mobTimers[mk].display = formatTime(secs);
-    }
-    const btnEl = document.querySelector(`[data-mobtimer="${mk}"]`);
-    if (btnEl) { btnEl.textContent = mobTimers[mk].display; btnEl.className = 'mob-timer-btn running'; }
-  }, 1000);
+    if(secs<=0){clearInterval(mobTimers[mk].interval);if(navigator.vibrate)navigator.vibrate([200,100,200]);mobTimers[mk].display='Done!';}
+    else{mobTimers[mk].display=formatTime(secs);}
+    const btnEl=document.querySelector(`[data-mobtimer="${mk}"]`);
+    if(btnEl){btnEl.textContent=mobTimers[mk].display;btnEl.className='mob-timer-btn running';}
+  },1000);
   renderDay();
 }
 
-function renderDay() {
-  const workout = WORKOUTS[currentDay];
-  let html = '';
-  html += `<div class="day-header"><div class="day-title">${FULL_DAYS[currentDay]}</div><div class="day-subtitle">${SUBTITLES[currentDay]}</div>`;
-  if (DURATIONS[currentDay]) html += `<div class="duration-badge">${DURATIONS[currentDay]}</div>`;
-  html += `</div>`;
+function renderDay(){
+  const workout=WORKOUTS[currentDay];
+  let html='';
+  html+=`<div class="day-header"><div class="day-title">${FULL_DAYS[currentDay]}</div><div class="day-subtitle">${SUBTITLES[currentDay]}</div>`;
+  if(DURATIONS[currentDay])html+=`<div class="duration-badge">${DURATIONS[currentDay]}</div>`;
+  html+=`</div>`;
 
-  if (workout.rest) {
-    html += `<div class="rest-day-card"><div style="font-size:44px;margin-bottom:12px">🚶</div><div class="rest-day-title">Rest Day</div><div class="rest-day-text">2-mile walk at comfortable pace<br>Extra sleep and recovery prioritized<br><br>No structured training today.</div></div>`;
-    document.getElementById('appContent').innerHTML = html;
-    return;
+  if(workout.rest){
+    html+=`<div class="rest-day-card"><div style="font-size:44px;margin-bottom:12px">🚶</div><div class="rest-day-title">Rest Day</div><div class="rest-day-text">2-mile walk at comfortable pace<br>Extra sleep and recovery prioritized<br><br>No structured training today.</div></div>`;
+    document.getElementById('appContent').innerHTML=html;return;
   }
 
-  workout.sections.forEach((sec, secIdx) => {
-    html += `<div class="section-label">${sec.label}</div>`;
-    if (sec.type === 'exercises') {
-      sec.items.forEach((ex, exIdx) => { html += renderExercise(ex, currentDay, secIdx, exIdx); });
-    } else if (sec.type === 'cardio') {
-      html += `<div class="cardio-card">`;
-      sec.items.forEach(item => {
-        html += `<div class="cardio-row"><div><div class="cardio-name">${item.name}</div><div class="cardio-detail">${item.duration} · ${item.intensity}</div></div>`;
-        if (item.hr) html += `<div class="cardio-badge">${item.hr}</div>`;
-        html += `</div>`;
+  workout.sections.forEach((sec,secIdx)=>{
+    html+=`<div class="section-label">${sec.label}</div>`;
+    if(sec.type==='exercises'){
+      sec.items.forEach((ex,exIdx)=>{html+=renderExercise(ex,currentDay,secIdx,exIdx);});
+    } else if(sec.type==='cardio'){
+      html+=`<div class="cardio-card">`;
+      sec.items.forEach((item,itemIdx)=>{html+=renderCardioItem(item,currentDay,secIdx,itemIdx);});
+      html+=`</div>`;
+    } else if(sec.type==='mobility'){
+      html+=`<div class="mobility-card">`;
+      sec.items.forEach((item,mi)=>{
+        const mk=`mob_${currentDay}_${secIdx}_${mi}`;
+        const isRunning=mobTimers[mk];
+        html+=`<div class="mobility-row"><div style="flex:1"><div class="mob-name">${item.name}</div><div style="font-size:13px;color:#666;margin-top:2px">${item.area} · ${item.duration}</div></div>`;
+        html+=`<button class="mob-timer-btn${isRunning?' running':''}" data-mobtimer="${mk}" onclick="startMobTimer('${mk}')">${isRunning?isRunning.display:'Timer'}</button>`;
+        html+=`</div>`;
       });
-      html += `</div>`;
-    } else if (sec.type === 'mobility') {
-      html += `<div class="mobility-card">`;
-      sec.items.forEach((item, mi) => {
-        const mk = `mob_${currentDay}_${secIdx}_${mi}`;
-        const isRunning = mobTimers[mk];
-        html += `<div class="mobility-row"><div style="flex:1"><div class="mob-name">${item.name}</div><div style="font-size:13px;color:#666;margin-top:2px">${item.area} · ${item.duration}</div></div>`;
-        html += `<button class="mob-timer-btn${isRunning?' running':''}" data-mobtimer="${mk}" onclick="startMobTimer('${mk}')">${isRunning ? isRunning.display : 'Timer'}</button>`;
-        html += `</div>`;
-      });
-      html += `</div>`;
-    } else if (sec.type === 'interval') {
-      const cfg = sec.protocol === 'thursday'
-        ? { work:'1 min hard', rest:'2 min easy', rounds:6, hrTarget:'150–165 bpm' }
-        : { work:'30 sec sprint', rest:'90 sec easy', rounds:5, hrTarget:'160–170 bpm' };
-      html += `<div class="interval-card">`;
-      html += `<div class="interval-title">${sec.protocol==='thursday'?'6 Rounds · 1:2 Work/Rest':'5 Rounds · HIIT Finisher'}</div>`;
-      html += `<div style="font-size:14px;color:#666;margin-bottom:12px">${cfg.work} / ${cfg.rest} · <span style="color:#ff6b6b">${cfg.hrTarget}</span></div>`;
-      if ((intervalRunning && intervalState.protocol===sec.protocol) || (intervalState.phase==='done' && intervalState.protocol===sec.protocol)) {
-        html += `<div style="text-align:center;padding:12px 0">`;
-        html += `<div class="interval-phase${intervalState.phase==='work'?' work':intervalState.phase==='rest'?' rest':''}" id="int_phase">${intervalState.phase==='done'?'Complete!':intervalState.phase==='work'?'Work':'Rest'}</div>`;
-        html += `<div class="interval-time" id="int_time">${intervalState.phase==='done'?'0:00':formatTime(intervalState.seconds)}</div>`;
-        html += `<div class="interval-rounds" id="int_rounds">Round ${Math.min(intervalState.round,cfg.rounds)} of ${cfg.rounds}</div>`;
-        html += `</div>`;
+      html+=`</div>`;
+    } else if(sec.type==='interval'){
+      const cfg=sec.protocol==='thursday'
+        ?{work:'1 min hard',rest:'2 min easy',rounds:6,hrTarget:'150–165 bpm'}
+        :{work:'30 sec sprint',rest:'90 sec easy',rounds:5,hrTarget:'160–170 bpm'};
+      html+=`<div class="interval-card">`;
+      html+=`<div class="interval-title">${sec.protocol==='thursday'?'6 Rounds · 1:2 Work/Rest':'5 Rounds · HIIT Finisher'}</div>`;
+      html+=`<div style="font-size:14px;color:#666;margin-bottom:12px">${cfg.work} / ${cfg.rest} · <span style="color:#ff6b6b">${cfg.hrTarget}</span></div>`;
+      if((intervalRunning&&intervalState.protocol===sec.protocol)||(intervalState.phase==='done'&&intervalState.protocol===sec.protocol)){
+        html+=`<div style="text-align:center;padding:12px 0">`;
+        html+=`<div class="interval-phase${intervalState.phase==='work'?' work':intervalState.phase==='rest'?' rest':''}" id="int_phase">${intervalState.phase==='done'?'Complete!':intervalState.phase==='work'?'Work':'Rest'}</div>`;
+        html+=`<div class="interval-time" id="int_time">${intervalState.phase==='done'?'0:00':formatTime(intervalState.seconds)}</div>`;
+        html+=`<div class="interval-rounds" id="int_rounds">Round ${Math.min(intervalState.round,cfg.rounds)} of ${cfg.rounds}</div>`;
+        html+=`</div>`;
       }
-      const btnLabel = (intervalRunning && intervalState.protocol===sec.protocol) ? 'Stop Timer' : (intervalState.phase==='done'&&intervalState.protocol===sec.protocol)?'Restart':'Start Timer';
-      html += `<div class="interval-controls"><button class="timer-btn timer-start" onclick="startIntervalTimer('${sec.protocol}')" style="flex:1;padding:14px;font-size:17px">${btnLabel}</button></div>`;
-      html += `</div>`;
-    } else if (sec.type === 'text') {
-      html += `<div style="margin:4px 8px;background:#1a1a1a;border-radius:14px;padding:14px 16px;font-size:15px;color:#888">${sec.text}</div>`;
+      const btnLabel=(intervalRunning&&intervalState.protocol===sec.protocol)?'Stop Timer':(intervalState.phase==='done'&&intervalState.protocol===sec.protocol)?'Restart':'Start Timer';
+      html+=`<div class="interval-controls"><button class="timer-btn timer-start" onclick="startIntervalTimer('${sec.protocol}')" style="flex:1;padding:14px;font-size:17px">${btnLabel}</button></div>`;
+      html+=`</div>`;
+    } else if(sec.type==='text'){
+      html+=`<div style="margin:4px 8px;background:#1a1a1a;border-radius:14px;padding:14px 16px;font-size:15px;color:#888">${sec.text}</div>`;
     }
   });
 
-  if (workout.coach) {
-    html += `<div class="coach-card"><div class="coach-label">Coach tip</div><div class="coach-text">${workout.coach}</div></div>`;
+  if(workout.coach){
+    html+=`<div class="coach-card"><div class="coach-label">Coach tip</div><div class="coach-text">${workout.coach}</div></div>`;
   }
-
-  html += `<button class="reset-btn" onclick="saveSessionAndReset(${currentDay})">✓ Finish workout &amp; save session</button>`;
-  html += `<button class="export-btn" onclick="exportData()">↓ Export workout log</button>`;
-  html += `<div style="height:20px"></div>`;
-
-  document.getElementById('appContent').innerHTML = html;
+  html+=`<button class="reset-btn" onclick="saveSessionAndReset(${currentDay})">✓ Finish workout &amp; save session</button>`;
+  html+=`<button class="export-btn" onclick="exportData()">↓ Export workout log</button>`;
+  html+=`<div style="height:20px"></div>`;
+  document.getElementById('appContent').innerHTML=html;
 }
 
 buildTabs();
