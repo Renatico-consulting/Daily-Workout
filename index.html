@@ -147,8 +147,10 @@ const DURATIONS=['~60 min','~55–60 min','~60 min','~50–55 min','~60 min','',
 const WORKOUTS={
   0:{
     sections:[
-      {label:'Warm-up',type:'exercises',items:[
-        {name:'Elliptical — light resistance',sets:1,reps:'10 min',weight:'Level 3–4',rest:null,logType:'none'},
+      {label:'Warm-up',type:'cardio',items:[
+        {name:'Elliptical — light resistance',duration:'10 min',intensity:'Level 3–4',hr:'<115 bpm'},
+      ]},
+      {label:'Warm-up (continued)',type:'exercises',items:[
         {name:'Face pulls (rotator cuff prep)',sets:1,reps:'15–20',weight:'30–40 lbs',rest:null},
         {name:'Band pull-aparts',sets:1,reps:'15',weight:'Light band',rest:null,logType:'band'},
       ]},
@@ -196,19 +198,21 @@ const WORKOUTS={
   },
   2:{
     sections:[
-      {label:'Warm-up',type:'exercises',items:[
-        {name:'Elliptical — light resistance',sets:1,reps:'10 min',weight:'Level 3–4',rest:null,logType:'none'},
+      {label:'Warm-up',type:'cardio',items:[
+        {name:'Elliptical — light resistance',duration:'10 min',intensity:'Level 3–4',hr:'<115 bpm'},
+      ]},
+      {label:'Warm-up (continued)',type:'exercises',items:[
         {name:'Hip circles + leg swings',sets:1,reps:'2 min',weight:'Bodyweight',rest:null,logType:'none'},
         {name:'Knee-over-toe rocks',sets:3,reps:'15/side',weight:'Bodyweight',rest:'30 sec'},
         {name:'Bodyweight squat to depth',sets:2,reps:'10',weight:'Bodyweight',rest:'30 sec'},
       ]},
       {label:'Main Work',type:'exercises',items:[
-        {name:'Goblet Squat or Leg Press',sets:4,reps:'6–8',weight:'60–70 lbs DB / 180–220 lbs press',rest:'2–3 min',logType:'choices',choices:['Goblet Squat','Leg Press']},
-        {name:'Romanian Deadlift',sets:4,reps:'8',weight:'60–75 lbs DBs / 135–185 lbs barbell',rest:'2 min',choices:['DB Romanian Deadlift','Barbell Romanian Deadlift']},
+        {name:'Squat',sets:4,reps:'6–8',weight:'60–70 lbs DB / 155 lbs barbell',rest:'2–3 min',logType:'choices',choices:['Goblet Squat','Regular Squat']},
+        {name:'Romanian Deadlift',sets:4,reps:'8',weight:'60–75 lbs DBs / 135–185 lbs barbell',rest:'2 min',logType:'choices',choices:['DB Romanian Deadlift','Barbell Romanian Deadlift']},
         {name:'Bulgarian split squat',sets:3,reps:'8/leg',weight:'25–35 lbs DBs',rest:'90 sec'},
-        {name:'Leg press (if not used above)',sets:3,reps:'10',weight:'180–220 lbs',rest:'90 sec'},
+        {name:'Leg press',sets:3,reps:'10',weight:'180–220 lbs',rest:'90 sec'},
         {name:'Lying leg curl (machine)',sets:3,reps:'12',weight:'60–80 lbs',rest:'60 sec'},
-        {name:'Calf raise — seated or standing',sets:3,reps:'15–20',weight:'50–70 lbs',rest:'60 sec'},
+        {name:'Calf raise',sets:3,reps:'15–20',weight:'50–70 lbs',rest:'60 sec',logType:'choices',choices:['Seated','Cybex']},
         {name:'Hip abductor machine',sets:2,reps:'15',weight:'60–80 lbs',rest:'60 sec'},
       ]},
       {label:'Core Circuit — 3 rounds',type:'exercises',items:[
@@ -227,9 +231,7 @@ const WORKOUTS={
         {name:'Elliptical — very light',duration:'10 min',intensity:'Level 2–3',hr:'<110 bpm'},
       ]},
       {label:'Interval Block',type:'interval',protocol:'thursday'},
-      {label:'Zone 2 Cool-Down Cardio',type:'cardio',items:[
-        {name:'Elliptical or bike — easy',duration:'15–20 min',intensity:'Conversational',hr:'115–135 bpm'},
-      ]},
+      {label:'Zone 2 Block',type:'cardioChoice',choices:['Elliptical','Bike'],hr:'115–135 bpm',duration:'15–20 min',intensity:'Conversational pace'},
       {label:'Mobility',type:'mobility',items:[
         {name:'Foam roll — quads, IT band, upper back, lats',area:'Full body',duration:'5–6 min'},
         {name:'Kneeling lunge / couch stretch',area:'Hip flexors',duration:'90 sec/side'},
@@ -242,8 +244,10 @@ const WORKOUTS={
   },
   4:{
     sections:[
-      {label:'Warm-up',type:'exercises',items:[
-        {name:'Elliptical — light resistance',sets:1,reps:'10 min',weight:'Level 3–4',rest:null,logType:'none'},
+      {label:'Warm-up',type:'cardio',items:[
+        {name:'Elliptical — light resistance',duration:'10 min',intensity:'Level 3–4',hr:'<115 bpm'},
+      ]},
+      {label:'Warm-up (continued)',type:'exercises',items:[
         {name:'Dynamic stretch circuit',sets:1,reps:'3 min',weight:'Bodyweight',rest:null,logType:'none'},
       ]},
       {label:'Main Work — Compound Focus',type:'exercises',items:[
@@ -603,6 +607,18 @@ function renderExercise(ex, dayIdx, secIdx, exIdx){
       html+=renderSetRows(ex,dayIdx,secIdx,exIdx,selectedChoice);
       html+=`</div>`;
 
+    // ── CARDIOEX (elliptical warm-up — resistance/RPM/HR fields) ──
+    } else if(ex.logType==='cardioex'){
+      const clk=cardioLogKey(dayIdx,secIdx,exIdx);
+      const log=cardioLogs[clk]||{};
+      html+=`<div style="font-size:13px;color:#666;margin:10px 0 6px">Log this session:</div>`;
+      html+=`<div class="cardio-fields">`;
+      html+=`<div class="cardio-field"><label>Resistance</label><input type="text" placeholder="e.g. Level 4" value="${log.resistance||''}" onchange="saveCardioField('${clk}','resistance',this.value)"></div>`;
+      html+=`<div class="cardio-field"><label>RPM / Pace</label><input type="text" placeholder="e.g. 75 RPM" value="${log.rpm||''}" onchange="saveCardioField('${clk}','rpm',this.value)"></div>`;
+      html+=`<div class="cardio-field"><label>Avg HR${ex.hr?' (target '+ex.hr+')':''}</label><input type="text" placeholder="e.g. 108 bpm" value="${log.hr||''}" onchange="saveCardioField('${clk}','hr',this.value)"></div>`;
+      html+=`</div>`;
+      html+=`<textarea class="notes-input" rows="2" placeholder="Additional notes..." onchange="saveCardioField('${clk}','notes',this.value)">${log.notes||''}</textarea>`;
+
     // ── BAND ──
     } else if(ex.logType==='band'){
       html+=`<div style="font-size:13px;color:#666;margin:10px 0 4px">Log band color and reps:</div>`;
@@ -723,6 +739,39 @@ function renderDay(){
       html+=`<div class="cardio-card">`;
       sec.items.forEach((item,itemIdx)=>{html+=renderCardioItem(item,currentDay,secIdx,itemIdx);});
       html+=`</div>`;
+    } else if(sec.type==='cardioChoice'){
+      // Single choice selector — independent log per equipment option
+      const cck=`cc_d${currentDay}_s${secIdx}`;
+      const chosen=choiceSelections[cck]||sec.choices[0];
+      const clk=cardioLogKey(currentDay,secIdx,slug(chosen));
+      const log=cardioLogs[clk]||{};
+      html+=`<div class="cardio-card">`;
+      html+=`<div class="cardio-row">`;
+      html+=`<div class="cardio-row-top"><div><div class="cardio-name">Zone 2 — ${chosen}</div><div class="cardio-detail">${sec.duration} · ${sec.intensity}</div></div><div class="cardio-badge">${sec.hr}</div></div>`;
+      // Equipment tabs
+      html+=`<div class="choice-tabs" style="margin:8px 0 4px">`;
+      sec.choices.forEach(c=>{
+        html+=`<button class="choice-tab${chosen===c?' active':''}" onclick="choiceSelections['${cck}']='${c}';saveData();renderDay()">${c}</button>`;
+      });
+      html+=`</div>`;
+      // Log fields
+      const isOpenCC=openCardioLogs[cck];
+      html+=`<button class="cardio-log-toggle" onclick="toggleCardioLog('${cck}')">${isOpenCC?'▲ Hide log':'▼ Log session'}</button>`;
+      if(!isOpenCC&&(log.resistance||log.rpm||log.hr)){
+        let prev=[];
+        if(log.resistance)prev.push('Res: '+log.resistance);
+        if(log.rpm)prev.push('RPM: '+log.rpm);
+        if(log.hr)prev.push('HR: '+log.hr);
+        html+=`<div class="cardio-note-preview">${prev.join(' · ')}</div>`;
+      }
+      if(isOpenCC){
+        html+=`<div class="cardio-log-area"><div class="cardio-fields">`;
+        html+=`<div class="cardio-field"><label>Resistance</label><input type="text" placeholder="e.g. Level 5" value="${log.resistance||''}" onchange="saveCardioField('${clk}','resistance',this.value)"></div>`;
+        html+=`<div class="cardio-field"><label>RPM / Pace</label><input type="text" placeholder="e.g. 80 RPM" value="${log.rpm||''}" onchange="saveCardioField('${clk}','rpm',this.value)"></div>`;
+        html+=`<div class="cardio-field"><label>Avg Heart Rate</label><input type="text" placeholder="e.g. 128 bpm" value="${log.hr||''}" onchange="saveCardioField('${clk}','hr',this.value)"></div>`;
+        html+=`</div><textarea class="notes-input" rows="2" placeholder="Any other notes..." onchange="saveCardioField('${clk}','notes',this.value)">${log.notes||''}</textarea></div>`;
+      }
+      html+=`</div></div>`;
     } else if(sec.type==='mobility'){
       html+=`<div class="mobility-card">`;
       sec.items.forEach((item,mi)=>{
